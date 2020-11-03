@@ -1,0 +1,4 @@
+c:\users\userpc\documents\visual studio 2010\Projects\studentdemo.cs\studentdemo.cs\bin\Debug\studentdemo.cs.exe
+c:\users\userpc\documents\visual studio 2010\Projects\studentdemo.cs\studentdemo.cs\bin\Debug\studentdemo.cs.pdb
+c:\users\userpc\documents\visual studio 2010\Projects\studentdemo.cs\studentdemo.cs\obj\x86\Debug\studentdemo.cs.exe
+c:\users\userpc\documents\visual studio 2010\Projects\studentdemo.cs\studentdemo.cs\obj\x86\Debug\studentdemo.cs.pdb

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Dreams Bank Welcome Page</title>
+        <script src ="js/jquery-1.4.2.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                redrctz();
+            });
+            function redirect()
+            {
+                redrct();
+            }
+            function redrctz()
+            {
+                setInterval(function() {
+                    $('#dd').html($('#dd').html() + '.');
+                }, 500);
+            }
+            function redrct()
+            {
+                setInterval(function() {
+                    window.location = "bank1.php";
+                }, 3000);
+            }
+        </script>
+    </head>
+    <body>
+    <center>
+        <h1>Redirecting to Your Bank Website</h1>
+        <h1><div id="dd"></div></h1>
+    </center>
+    <?php
+    //name,cardNo, cvv, amount, paymentToName, paymentToaccountNo,response
+    session_start();
+    $cardNo = $_GET["cardNo"];
+    $cvv = $_GET["cvv"];
+    $amount = $_GET["amount"];
+    $paymentToName = $_GET["paymentToName"];
+    $paymentToAccount = $_GET["paymentToaccountNo"];
+    $response = $_GET["response"];
+    $name = $_GET["name"];
+
+    $_SESSION["cardNo"] = $cardNo;
+    $_SESSION["cvv"] = $cvv;
+    $_SESSION["amount"] = $amount;
+    $_SESSION["paymentToName"] = $paymentToName;
+    $_SESSION["paymentToaccountNo"] = $paymentToAccount;
+    $_SESSION["response"] = $response;
+    $_SESSION["name"] = $name;
+
+    require_once __DIR__ .'/dbConnect.php';
+    $con = new dbConnect();
+    $result = mysql_query("select * from tbl_accountDetails where name='$name' and cardNo = '$cardNo' and cvv = '$cvv'") or die(mysql_error());
+    if ($resultRow = mysql_fetch_array($result)) {
+        $currentBalance = $resultRow["balance"];
+        $paymentAmount = $amount;
+        if ($currentBalance > $paymentAmount) {
+            echo "<script>redirect();</script>";
+        } else {
+            echo "<script>window.location.href='" . $response . "?response=insufficientBalance';</script>";
+        }
+    } else {
+        echo "<script>window.location.href='" . $response . "?response=incorrectCredentials';</script>";
+    }
+    ?>
+</body>
+</html>

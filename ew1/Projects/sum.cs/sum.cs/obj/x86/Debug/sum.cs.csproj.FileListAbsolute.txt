@@ -1,0 +1,4 @@
+c:\users\userpc\documents\visual studio 2010\Projects\sum.cs\sum.cs\bin\Debug\sum.cs.exe
+c:\users\userpc\documents\visual studio 2010\Projects\sum.cs\sum.cs\bin\Debug\sum.cs.pdb
+c:\users\userpc\documents\visual studio 2010\Projects\sum.cs\sum.cs\obj\x86\Debug\sum.cs.exe
+c:\users\userpc\documents\visual studio 2010\Projects\sum.cs\sum.cs\obj\x86\Debug\sum.cs.pdb

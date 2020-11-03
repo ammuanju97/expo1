@@ -1,0 +1,178 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="ExhibitorMaster.master.cs"
+    Inherits="Exhibitor_ExhibitorMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Red Blog Theme - Free CSS Templates</title>
+    <meta name="keywords" content="Red Blog Theme, Free CSS Templates" />
+    <meta name="description" content="Red Blog Theme - Free CSS Templates by templatemo.com" />
+    <link href="templatemo_style.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .auto-style1 {
+            width: 723px;
+            margin-right: 0px;
+            margin-top: 1px;
+        }
+    </style>
+</head>
+<body>
+   <form id="form1" runat="server">
+<div id="templatemo_top_wrapper">
+	<div id="templatemo_top">
+    
+        <div id="templatemo_menu">
+                    
+            <ul>
+                <li><a href="exhibitorhomes.aspx" class="current">HOME</a></li>
+                <li><a href="addexpos.aspx">ADD EXPO</a></li>
+                <li><a href="exbaddtik.aspx">EXPO TICKET</a></li>
+                <li><a href="boothallocation.aspx">BOOTH ALLOC</a></li>
+                <li><a href="logout.aspx">Log Out</a></li>
+            </ul>    	
+        
+        </div> <!-- end of templatemo_menu -->
+        
+       <%-- <div id="twitter">
+        	<a href="#">follow us <br />
+        	on twitter</a>
+        </div>--%>
+        
+  </div>
+</div>
+
+<div id="templatemo_header_wrapper">
+	<div id="templatemo_header">
+    
+    	<div id="site_title">
+            <h1><a href="http://www.templatemo.com" target="_parent"><strong>THE CANN EXPOS</strong><span>The Expo Festives</span></a></h1>
+        </div>
+    
+    </div>
+</div>
+
+<div id="templatemo_main_wrapper">
+	<div id="templatemo_main">
+		<div id="templatemo_main_top">
+        
+        	<div id="templatemo_content">
+        
+    		<div class="post_section">
+            
+            	<div class="post_date">
+                	<span></span>
+            	</div>
+<div class="post_content">
+                
+                    <h2><a href="blog_post.html"></a></h2>
+
+                    <strong></strong>   <strong></strong> <a href="#"></a> <a href="#"></a>
+                    
+                    <a href="http://www.templatemo.com/page/1" target="_parent">
+                    <img style="position:relative;left:-95px; top: -3px;" src="images/sesd.jpg" 
+                        alt="image" /></a>
+                    
+                    <%--<p><a href="http://www.templatemo.com" target="_parent">Red Blog </a> is a free HTML/CSS layout from templatemo.com for everyone. There are total 5 pages included (blog, <a href="blog_post.html">full  post</a>, services, portfolio, contact) Quisque at ante sit amet erat laoreet fermentum. Quisque nec nisl.</p>
+                    <p>Fusce lacinia orci at nisi. Suspendisse at nisi nec diam pretium tincidunt. Ut vitae felis eu lectus ultrices varius. Aliquam lacus turpis, dapibus eget, tincidunt eu, lobortis et, magna. Integer pellentesque dignissim diam. </p>
+                    <p><a href="blog_post.html">24 Comments</a> | <a href="blog_post.html">Continue reading...</a>                </p>--%>
+
+                    <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+</div>
+                <div class="cleaner"></div>
+            </div>
+                
+            <div class="post_section">
+                    
+                
+            
+              
+              <%--
+              	<div class="post_date">
+                	<span></span>
+            	</div>--%>
+                
+                <div class="post_content">
+                	<h2><a href="blog_post.html"></a></h2>
+                	<strong></strong>  <strong></strong> <a href="#"></a> <a href="#"></a>
+                
+                	<a href="http://www.templatemo.com/page/2" target="_parent"><%--<img src="images/templatemo_image_02.jpg" alt="image" />--%></a>
+                
+                	<p><a href="http://validator.w3.org/check?uri=referer" rel="nofollow"></a>&nbsp;<a href="http://jigsaw.w3.org/css-validator/check/referer" rel="nofollow"></a><a href="http://www.photovaco.com" target="_blank"></a><a href="http://www.smashingmagazine.com/2008/09/23/practika-a-free-icon-set/" target="_blank"></a><a href="http://www.brusheezy.com" target="_blank"></a><a href="http://www.brusheezy.com" target="_blank"></a></p>
+               	  <a href="blog_post.html"></a> | <a href="blog_post.html"></a>
+            
+            	</div>
+                <div class="cleaner"></div>
+            </div>
+        
+       	  </div>
+            
+          
+          <div id="templatemo_sidebar">
+            	
+                <h4></h4>
+                <ul class="templatemo_list">
+                    <%--<li>Add Account</li>--%>
+                    <li><a href="viewcomreq.aspx">View company request</a></li>
+                    <li><a href="notification.aspx">Notifications</a></li>
+                    <li><a href="viewissuedticket.aspx">View Issued Tickets</a></li>
+                   <li><a href="../ChatPage.aspx">CHAT</a></li>
+                    <li><a href="viewtran.aspx">View Transactions</a></li>
+                   
+                   
+                   
+                    <li><a href="logout.aspx">LOGOUT</a></li>
+                </ul>
+                
+                <div class="cleaner_h40"></div>
+                
+               <%-- <h4>Friends</h4>
+                <ul class="templatemo_list">
+                    <li><a href="http://www.templatemo.com" target="_parent">Free CSS Templates</a></li>
+                    <li><a href="http://www.flashmo.com" target="_parent">Flash Templates</a></li>
+                    <li><a href="http://www.templatemo.com/page/1" target="_parent">Free Blog Themes</a></li>
+                    <li><a href="http://www.webdesignmo.com/blog" target="_parent">Web Design Blog</a></li>
+                    <li><a href="http://www.koflash.com" target="_parent">Flash Websites Gallery</a></li>
+                    <li><a href="#">Vestibulum laoreet</a></li>
+                    <li><a href="#">Nullam nec mi enim</a></li>
+                    <li><a href="#">Aliquam quam nulla</a></li>
+                </ul>--%>
+                
+                <%--<div id="ads">
+                	<a href="#"><img src="images/templatemo_200x100_banner.jpg" alt="banner 1" /></a>
+                    
+                    <a href="#"><img src="images/templatemo_200x100_banner.jpg" alt="banner 2" /></a>
+                </div>--%>
+                
+            </div>
+        
+        	<div class="cleaner"></div>
+            
+        </div>
+        
+    </div>
+    
+    <div id="templatemo_main_bottom"></div>
+    
+</div>
+
+<div id="templatemo_footer">
+
+    <a href="index.html"></a> | 
+    <a href="http://www.iwebsitetemplate.com" target="_parent"></a> <a href="http://www.templatemo.com" target="_parent"></a>
+    
+</div>
+
+<div align=center><a href='http://all-free-download.com/free-website-templates/'></a></div></body>
+
+    
+    <div>
+        
+    </div>
+    </form>
+</body>
+</html>

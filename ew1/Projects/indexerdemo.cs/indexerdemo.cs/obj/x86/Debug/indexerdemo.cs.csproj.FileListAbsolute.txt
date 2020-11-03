@@ -1,0 +1,5 @@
+c:\users\userpc\documents\visual studio 2010\Projects\indexerdemo.cs\indexerdemo.cs\bin\Debug\indexerdemo.cs.exe
+c:\users\userpc\documents\visual studio 2010\Projects\indexerdemo.cs\indexerdemo.cs\bin\Debug\indexerdemo.cs.pdb
+c:\users\userpc\documents\visual studio 2010\Projects\indexerdemo.cs\indexerdemo.cs\obj\x86\Debug\indexerdemo.cs.exe
+c:\users\userpc\documents\visual studio 2010\Projects\indexerdemo.cs\indexerdemo.cs\obj\x86\Debug\indexerdemo.cs.pdb
+C:\Users\USERPC\Documents\Visual Studio 2010\Projects\indexerdemo.cs\indexerdemo.cs\obj\x86\Debug\indexerdemo.cs.csprojResolveAssemblyReference.cache

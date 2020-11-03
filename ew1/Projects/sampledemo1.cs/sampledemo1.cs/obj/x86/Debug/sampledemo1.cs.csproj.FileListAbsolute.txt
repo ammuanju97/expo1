@@ -1,0 +1,4 @@
+c:\users\userpc\documents\visual studio 2010\Projects\sampledemo1.cs\sampledemo1.cs\bin\Debug\sampledemo1.cs.exe
+c:\users\userpc\documents\visual studio 2010\Projects\sampledemo1.cs\sampledemo1.cs\bin\Debug\sampledemo1.cs.pdb
+c:\users\userpc\documents\visual studio 2010\Projects\sampledemo1.cs\sampledemo1.cs\obj\x86\Debug\sampledemo1.cs.exe
+c:\users\userpc\documents\visual studio 2010\Projects\sampledemo1.cs\sampledemo1.cs\obj\x86\Debug\sampledemo1.cs.pdb

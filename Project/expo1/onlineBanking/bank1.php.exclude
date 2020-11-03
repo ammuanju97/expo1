@@ -1,0 +1,222 @@
+<head>
+    <title>DreamzBank | Payment</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/foundation.min.css">
+    <link rel="stylesheet" href="css/superfish.css">
+    <link rel="stylesheet" href="css/stylesheet.css">
+    <script>
+        function redirectz(path)
+        {
+            window.location = path;
+        }
+    </script>
+    <!--[if lt IE 9]>
+    <link rel="stylesheet" href="css/ie-fixes.css">
+    <![endif]-->
+</head>
+<body>
+    <?php
+    session_start();
+    require_once __DIR__ . '/dbConnect.php';
+    $con = new dbConnect();
+    ?>
+    <div class="wrapper">
+        <div class="header">
+            <div class="row">
+                <div class="columns large-12  header-inner"> <a href="index.html"><img src="images/logo.png" alt="" class="logo"></a> </div>
+                <div class="columns large-12">
+                    <nav>
+                        <section>
+                            <ul class="sf-menu large-12">
+
+                            </ul>
+                        </section>
+                    </nav>
+                </div>
+            </div>
+            <div class="row">
+                <div class="columns large-12 small-top-menu">
+                    <div class="row">
+                        <div class="columns large-12 plr0 top-nav">
+                            <form name="dropdown" class="dropdown" action="#">
+                                <nav>
+                                    <section>
+                                        <select name="selected" id="target" accesskey="E" onChange="goToNewPage(document.dropdown.selected)">
+                                            <option value="index.html">home</option>
+                                            <option value="about.html">about us</option>
+                                            <option value="blog.html">blog</option>
+                                            <option value="gallery.html">gallery</option>
+                                            <option value="services.html">services</option>
+                                            <option value="contact.html">contact us</option>
+                                        </select>
+                                    </section>
+                                </nav>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row content-wrapper">
+            <div class="columns large-12">
+                <div class="row">
+                    <div class="columns large-12 content ">
+                        <h1 class="page-title">Make Payment</h1>
+                        <div class="row contact-form">
+                            <div class="columns large-8">
+
+                                <?php
+                                $count = 0;
+                                if (!isset($_POST["count"])) {
+                                    $count = 3;
+                                    if ($_SESSION["amount"] == null) {
+                                        $path = $_SESSION["response"] . "?response=sessionErrorOccured";
+                                        out . print("<script>redirectz('" + $path + "');</script>");
+                                    }
+                                }
+                                //name,cardNo, cvv, amount, paymentToName, paymentToaccountNo,response
+                                if (isset($_POST["count"])) {
+                                    $pwd = $_POST["pwd"];
+                                    $name = $_SESSION["name"];
+                                    $cardNo = $_SESSION["cardNo"];
+                                    $cvv = $_SESSION["cvv"];
+                                    $amount = $_SESSION["amount"];
+                                    $paymentToaccountNo = $_SESSION["paymentToaccountNo"];
+                                    $remarks = $_POST["remarks"];
+
+                                    $result1 = mysql_query("select * from tbl_accountDetails where transactionPassword='$pwd' and  name='$name' and cardNo = '$cardNo' and cvv = '$cvv'");
+                                    if ($resultRow1 = mysql_fetch_array($result1)) {
+                                        mysql_query("update tbl_accountDetails set balance= (balance - '$amount') where transactionPassword='$pwd'and  name='$name' and cardNo = '$cardNo' and cvv = '$cvv'");
+                                        mysql_query("update tbl_accountDetails set balance= (balance + '$amount') where accountNo = '$paymentToaccountNo'");
+                                        mysql_query("insert into transaction (fromAccountNo,toAccountNo,amount,remarks) values ((select accountNo from tbl_accountDetails where cardNo = '$cardNo'),'$paymentToaccountNo','$amount','$remarks')");
+                                        echo "<script>alert('Processing Payment')</script>";
+                                        $path = "bank2.php?status=paid";
+                                        echo "<script>redirectz('" . $path . "');</script>";
+                                    } else {
+                                        $count = $_POST["count"];
+                                        $count--;
+                                        if ($count == 0) {
+                                            echo "<script>alert('Incorrect Password: Maximum Tries over')</script>";
+                                            $path = $_SESSION["response"] . "?response=incorrectCredentials";
+                                            echo "<script>redirectz('" . $path . "');</script>";
+                                        } else {
+                                            echo "<script>alert('Incorrect Password: You have " . $count . " Chances Reamining')</script>";
+                                        }
+                                    }
+                                }
+                                ?>
+                                <form id="contact-form" method="post">
+                                    <input type="text" name="count" value="<?php echo $count; ?>">
+                                    <?php
+                                    //name,cardNo, cvv, amount, paymentToName, paymentToaccountNo,response
+                                    $name = $_SESSION["name"];
+                                    $cardNo = $_SESSION["cardNo"];
+                                    $cvv = $_SESSION["cvv"];
+                                    $result = mysql_query("select * from tbl_accountDetails where name='$name' and cardNo = '$cardNo' and cvv = '$cvv'");
+
+                                    if ($resultRow = mysql_fetch_array($result)) {
+                                        ?>
+                                        <table style="width: 100%" border="0">
+                                            <tr>
+                                                <td style="width: 28%">Welcome, </td>
+                                                <td><?php echo $resultRow["name"]; ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Transfer from Account No</td>
+                                                <td><?php echo $resultRow["accountNo"]; ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Transfer To</td>
+                                                <td><?php echo $_SESSION["paymentToName"]; ?> : <?php echo $_SESSION["paymentToaccountNo"] ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Amount</td>
+                                                <td><?php echo $_SESSION["amount"]; ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Remarks</td>
+                                                <td rowspan="2"><textarea placeholder="Remarks:" name="remarks"></textarea></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Transaction Password</td>
+                                                <td><input placeholder="Transaction Password" type="password" name="pwd"></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                        </table>
+                                        <?php
+                                    }
+                                    ?>
+                                    <input type="submit" class="button" name="submit" value="Make Payment">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row collapse">
+                        <div class="columns large-12"> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="row">
+                <div class="columns large-12 footer-inner">
+                    <div class="row">
+                        <div class="columns large-3 box">
+                            <div class="">
+                                <h2 class="footer-title">Resources</h2>
+                                <ul>
+                                    <li><a href="#">home</a></li>
+                                    <li><a href="#">faqs</a></li>
+                                    <li><a href="#">contact us</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="columns large-3 box">
+                            <div>
+                                <h2 class="footer-title">links </h2>
+                                <ul>
+                                    <li><a href="#">home</a></li>
+                                    <li><a href="#">faqs</a></li>
+                                    <li><a href="#">contact us</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="columns large-3 box">
+                            <div>
+                                <h2 class="footer-title">follow us</h2>
+                                <ul>
+                                    <li><a href="#" class="media tweeter"></a>Follow us on twitter</li>
+                                    <li><a href="#" class="media youtube"></a>Follow us on youtube</li>
+                                    <li><a href="#" class="media facebook"></a>Follow us on facebook</li>
+                                    <li><a href="#" class="media gmail"></a>Follow us on google plus</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="columns large-3 box">
+                            <div>
+                                <h2 class="footer-title">Contact us</h2>
+                                <p>Address With Postal Code</p>
+                                <p><b>Tel:</b> (Code)Landline, (Code)Mobile</p>
+                                <p><b>Fax:</b> (Code)Number, (Code)Number</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <div class="credit-row">
+            <div class="row">
+                <div class="columns large-11 credit">&copy; 2045 All rights reserved by <a href="#">DreamzBank.</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
